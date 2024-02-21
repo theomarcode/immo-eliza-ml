@@ -1,7 +1,9 @@
 import joblib
 import pandas as pd
+import seaborn as sns
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LinearRegression
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
@@ -13,9 +15,27 @@ def train():
     data = pd.read_csv("data/properties.csv")
 
     # Define features to use
-    num_features = ["nbr_frontages"]
-    fl_features = ["fl_terrace"]
-    cat_features = ["equipped_kitchen"]
+    num_features = [
+        "nbr_frontages",
+        "nbr_bedrooms",
+        "total_area_sqm",
+        "surface_land_sqm",
+        "terrace_sqm",
+        "garden_sqm",
+        "primary_energy_consumption_sqm",
+    ]
+    fl_features = [
+        "fl_terrace",
+        "fl_garden",
+        "fl_double_glazing",
+    ]
+    cat_features = [
+        "property_type",
+        "subproperty_type",
+        "equipped_kitchen",
+        "epc",
+        "heating_type",
+    ]
 
     # Split the data into features and target
     X = data[num_features + fl_features + cat_features]
