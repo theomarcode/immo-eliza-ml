@@ -7,6 +7,17 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder
+from scipy import stats
+from sklearn.metrics import mean_squared_error
+import numpy as np
+import pickle
+import matplotlib.pyplot as plt
+from sklearn.ensemble import RandomForestRegressor
+
+"""def train_model(df_features, labels):
+    X_train, X_test, y_train, y_test = train_test_split(
+        df_features, labels, test_size=0.3, random_state=2
+    )"""
 
 
 def train():
@@ -23,16 +34,25 @@ def train():
         "terrace_sqm",
         "garden_sqm",
         "primary_energy_consumption_sqm",
+        "cadastral_income",
     ]
     fl_features = [
+        "fl_furnished",
+        "fl_open_fire",
         "fl_terrace",
         "fl_garden",
+        "fl_swimming_pool",
+        "fl_floodzone",
         "fl_double_glazing",
     ]
     cat_features = [
         "property_type",
         "subproperty_type",
+        "region",
+        "province",
+        "locality",
         "equipped_kitchen",
+        "state_building",
         "epc",
         "heating_type",
     ]
@@ -79,6 +99,13 @@ def train():
 
     # Train the model
     model = LinearRegression()
+    model = RandomForestRegressor(
+        n_estimators=100,
+        max_depth=10,
+        min_samples_split=2,
+        min_samples_leaf=1,
+        random_state=505,
+    )
     model.fit(X_train, y_train)
 
     # Evaluate the model
