@@ -27,8 +27,11 @@ def train():
 
     # Define features to use
     num_features = [
+        "construction_year",
         "nbr_frontages",
         "nbr_bedrooms",
+        "latitude",
+        "longitude",
         "total_area_sqm",
         "surface_land_sqm",
         "terrace_sqm",
