@@ -12,12 +12,7 @@ from sklearn.metrics import mean_squared_error
 import numpy as np
 import pickle
 import matplotlib.pyplot as plt
-from sklearn.ensemble import RandomForestRegressor
-
-"""def train_model(df_features, labels):
-    X_train, X_test, y_train, y_test = train_test_split(
-        df_features, labels, test_size=0.3, random_state=2
-    )"""
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 
 
 def train():
